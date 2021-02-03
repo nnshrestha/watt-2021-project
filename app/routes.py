@@ -1,14 +1,27 @@
-from flask import request, render_template
+from flask import request, render_template, session, redirect, url_for
 from app import app
+from app.PolyLinear import linearPicker
 
 
-@app.route("/",methods =['GET', 'POST'])
+@app.route("/", methods=["GET", "POST"])
 def home():
-    username = request.form.get('uname', None)
-    if username:
-        return render_template('index.html', uname=username)
-    else:
-        return render_template('login.html')
+    if request.method == "POST":
+        pass
+
+    if session.get("username",None):
+        x, y,prob = linearPicker()
+        return render_template("linear.html", uname=session["username"], prob=prob)
+
+    return redirect('/login')
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        username = request.form.get("uname", None)
+        session["username"] = username
+        return redirect('/')
+    return render_template("logintest.html")
 
 
 @app.route("/leaderboard")
