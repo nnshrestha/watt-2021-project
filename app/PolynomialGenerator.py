@@ -18,7 +18,7 @@ def polynomialgen():
 
     print(x1,x2)
     QuadraticEquation = "{}x^2 + {}x + {}"
-    print(QuadraticEquation.format(a,b,c))
-    return x1, x2
+    printed = QuadraticEquation.format(a,b,c)
+    return x1, x2, printed
 
-polynomialgen()
+print(polynomialgen())
