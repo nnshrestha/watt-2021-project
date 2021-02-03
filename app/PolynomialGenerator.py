@@ -16,9 +16,6 @@ def polynomialgen():
     if r != 0:
         a, b, c = a*r, b*r, c*r
 
-    print(x1,x2)
     QuadraticEquation = "{}x^2 + {}x + {}"
-    printed = QuadraticEquation.format(a,b,c)
-    return x1, x2, printed
-
-print(polynomialgen())
+    printedEquation = QuadraticEquation.format(a,b,c)
+    return x1, x2, printedEquation

@@ -9,6 +9,9 @@ def noZeros(m):
         m += 1
     return m
 
+
+#Linear Generators - All return in y-inter, x-inter, and equation format. #1 doesn't have y-inter 
+
 def lineargen1():
     m, b = randomNum3(), randomNum3()
     m = noZeros(m)
@@ -43,18 +46,14 @@ def lineargen3():
 
     return yInter, xInter, printedEquation
 
-####
+
+#Random linear gen
 
 def linearPicker():
     t = random.randint(1,3)
     if t == 1:
-        print("1")
         return lineargen1()
     elif t == 2:
-        print("2")
         return lineargen2()
     else:
-        print("3")
         return lineargen3()
-
-print(linearPicker())
