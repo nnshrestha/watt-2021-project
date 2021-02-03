@@ -13,10 +13,12 @@
 <body style = "background-color:tomato">
 <h1>Watt 2021 Project</h1>
 <p>{{uname}}</p>
+<p>{{pts}}</p>
+{% if message %} <p>Previous was {{message}}</p> {% endif %}
 <p>{{prob}}</p>
 <br><br><br><br><br><br>
 <p>Solve for x and type x intercept below. Rounding to 2 decimal places.</p>
-<form action="/">
+<form action="" method="POST">
   <input type="text" id="ans" name="ans" ><br><br>
   <input type="submit" value="Submit">
 </form> 
