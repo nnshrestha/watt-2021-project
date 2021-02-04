@@ -14,8 +14,8 @@ def home():
         ans = request.form.get('ans', None)
         try:
             ans = float(ans)
-            if abs(ans - x) < 0.02:
-                savePoints(10 + getPoints())
+            if abs(ans - x) < 0.01:
+                savePoints(10*session.get("difficulty", 1) + getPoints())
                 return prob("correct")
             else:
                 return prob("incorrect")
@@ -29,11 +29,7 @@ def home():
         return redirect('/login')
 
 def prob(message = None):
-    thing = ""
-    if session.get("difficulty", 1):
-        return linear(message)
-    else:
-        return poly(message)
+    return linear(message) 
 
 def linear(message = None):
     thing = ""
@@ -46,6 +42,7 @@ def linear(message = None):
         thing = "Solve for smaller root. Rounding to 2 decimal places."
         x,y, prob = polynomialgen()
         x = min(x,y)
+    print(x)
     session['x'] =x 
     
     return render_template("thing.html", uname=session["username"], prob=prob, message= message, pts=getPoints(), thing = thing)
